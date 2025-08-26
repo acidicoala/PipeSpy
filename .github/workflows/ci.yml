@@ -1,0 +1,18 @@
+name: Continuous Integration
+on: push
+
+jobs:
+  ci:
+    name: CI
+    uses: acidicoala/KoalaBox/.github/workflows/build-and-package.yml@a053502132e51e936820f27b7c99316fdb62b3e4
+    permissions:
+      contents: write
+    with:
+      modules: >-
+        ["PipeSpy"]
+
+      zip_command: >
+        zip -j $ZIP_NAME
+        artifacts/*/*.dll
+
+      config: Release
